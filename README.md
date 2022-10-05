@@ -77,3 +77,59 @@ CREATE TABLE enderecos_usuario (
     primary key (id_endereco_usuario)
 );
 ```
+
+# Rotas
+
+### Usuário
+
+- **GET /usuarios**
+
+Confira os usuários registrados no banco de dados 
+
+Esquema da requisição:
+
+>http://localhost:3000/usuarios
+
+Esquema da resposta:
+
+```json
+[
+	{
+		"id_usuario": 1,
+		"nome": "Leo",
+		"sobrenome": "Leleo",
+		"email": "leleo@gmail",
+		"telefone": "978452587",
+		"cpf": "75812345678"
+	},
+	{
+		"id_usuario": 6,
+		"nome": "Guilherme",
+		"sobrenome": "Cordeiro",
+		"email": "gcordeiro773@gmail",
+		"telefone": "978452247",
+		"cpf": "24512345654"
+	}
+]
+```
+---
+- **GET /usuarios/:id**
+
+Busca um usuário no banco de dados a partir do id
+
+Esquema da requisição:
+
+>http://localhost:3000/usuarios/6
+
+Esquema da resposta:
+
+```json
+{
+	"id_usuario": 6,
+	"nome": "Guilherme",
+	"sobrenome": "Cordeiro",
+	"email": "gcordeiro773@gmail",
+	"telefone": "978452247",
+	"cpf": "24512345654"
+}
+```
