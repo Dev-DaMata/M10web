@@ -13,5 +13,17 @@ class usuariosModel{
             }
         })
     }
+
+    static listaPorId(id, res){
+        const sql = `SELECT * FROM usuarios WHERE id_usuario=${id}`
+        conexao.query(sql, (erro, resultado) =>{
+            const usuario = resultado[0]
+            if(erro){
+                res.status(400).json(erro)
+            }else{
+                res.status(200).json(usuario)
+            }
+        })
+    }
 }
 export default usuariosModel
