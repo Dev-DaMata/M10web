@@ -1,5 +1,6 @@
 import express from "express";
 import usuariosController from "./controllers/usuariosController.js";
+import enderecoController from "./controllers/enderecoController.js";
 import conexao from "./infra/conexao.js";
 import Tabelas from "./infra/tabelas.js";
 import * as dotenv from "dotenv";
@@ -20,6 +21,7 @@ conexao.connect(erro => {
         tabelas.init(conexao)
 
         usuariosController(app)
+        enderecoController(app)
         app.listen(port, () => {
             console.log(`http://localhost:${port}/`);
         })
