@@ -211,18 +211,27 @@ No json:
 
 ```json
 {
-	"nome": "junin",
-	"sobrenome": "silva",
-	"email": "junin@htht",
-	"telefone": "888475412",
-	"cpf": "74512752827"
+	"nome": "Hudson",
+	"sobrenome": "Uchoa",
+	"email": "hudlima@gmail.com",
+	"telefone": "716475512",
+	"cpf": "41283379549"
 }
 ```
 Esquema da resposta:
 
 ```json
 {
-	"msg": "O usuario foi alterado com sucesso!"
+	"codigo": 200,
+	"status": "sucesso",
+	"mensagem": "usuario alterado com sucesso",
+	"dados": {
+		"nome": "Hudson",
+		"sobrenome": "Uchoa",
+		"email": "hudlima@gmail.com",
+		"telefone": "716475512",
+		"cpf": "41283379549"
+	}
 }
 ```
 ---
