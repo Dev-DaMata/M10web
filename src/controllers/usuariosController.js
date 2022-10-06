@@ -2,8 +2,13 @@ import usuariosModel from "../model/usuariosModel.js"
 import usuariosDAO from "../DAO/usuariosDAO.js";
 
 const usuariosController = (app)=>{
-    app.get("/usuarios", (req, res) => {
-        usuariosModel.lista(res)
+    app.get("/usuarios", async (req, res) => {
+    try{
+        const resp = await usuariosDAO.lista()
+        res.status(resp.codigo).json(resp)
+    } catch (error) {
+        res.status(error.codigo).json(error)
+    }
     });
 
     app.get("/usuarios/:id", (req, res) =>{

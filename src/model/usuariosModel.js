@@ -35,22 +35,6 @@ class usuariosModel{
         
     }
 
-    static lista(res){
-        const sql = 'SELECT * FROM usuarios'
-        conexao.query(sql, (erro, resultados)=>{
-            if(erro){
-                res.status(400).json(erro)
-            }else{
-                res.status(200).json({
-                    "codido": 200,
-                    "status": "sucesso",
-                    "mensagem": "Listado todos os usuarios",
-                    "dados": resultados
-                })
-            }
-        })
-    }
-
     static listaPorId(id, res){
         const sql = `SELECT * FROM usuarios WHERE id_usuario=${id}`
         conexao.query(sql, (erro, resultado) =>{

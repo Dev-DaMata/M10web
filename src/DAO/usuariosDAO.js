@@ -3,7 +3,6 @@ import conexao from "../infra/conexao.js";
 class usuarioDAO{
 
     static adiciona(usuarios){
-  
             const sql = 'INSERT INTO usuarios SET nome = ?, sobrenome = ?, email = ?, telefone = ?, cpf = ?';
             return new Promise((resolve, reject)=>{
                 conexao.query(sql,             [
@@ -33,6 +32,31 @@ class usuarioDAO{
                 })
             })
         
+    }
+
+    static lista(res){
+        const sql = 'SELECT * FROM usuarios'
+        return new Promise((resolve, reject)=>{
+            conexao.query(sql, (erro, resultados)=>{
+                if(erro){
+                    reject({
+                        "codigo": 501,
+                        "status": "undefined",
+                        "mensagem": "erro interno",
+                        "dados": erro
+                    })
+                }else{
+                    resolve({                      
+                        "codigo": 200,
+                        "status": "sucesso",
+                        "mensagem": "Aqui esta a lista com todos os usuarios",
+                        "dados": [
+                            ...Object.values(resultados)
+                        ]                       
+                })
+                }
+            })
+        })
     }
 }
 export default usuarioDAO
