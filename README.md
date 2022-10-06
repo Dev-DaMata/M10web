@@ -180,7 +180,7 @@ Esquema da resposta:
 }
 ```
 ---
-- **DELETE /usuarios**
+- **DELETE /usuarios/id**
 
 Verbo responsavel por excluir o usuario do banco de dados
 
@@ -199,7 +199,7 @@ Esquema da resposta:
 }
 ```
 ---
-- **PUT /usuarios**
+- **PUT /usuarios/id**
 
 Verbo responsavel pela atualização do usuario
 
