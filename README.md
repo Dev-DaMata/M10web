@@ -124,18 +124,23 @@ Busca um usuário no banco de dados a partir do id
 
 Esquema da requisição:
 
->http://localhost:3000/usuarios/6
+>http://localhost:3000/usuarios/2
 
 Esquema da resposta:
 
 ```json
 {
-	"id_usuario": 6,
-	"nome": "Guilherme",
-	"sobrenome": "Cordeiro",
-	"email": "gcordeiro773@gmail",
-	"telefone": "978452247",
-	"cpf": "24512345654"
+	"codigo": 200,
+	"status": "sucesso",
+	"mensagem": "Listado apenas um usuario",
+	"dados": {
+		"id_usuario": 4,
+		"nome": "guilherme",
+		"sobrenome": "silva",
+		"email": "gcordeiro77@gmail.com",
+		"telefone": "716475512",
+		"cpf": "41283799549"
+	}
 }
 ```
 ---
