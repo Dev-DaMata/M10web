@@ -29,5 +29,16 @@ const enderecoController = (app)=>{
                 res.status(error.codigo).json(error)
             }
         });
+
+    app.put("/endereco/:id", async(req, res)=>{
+            try {
+                const id = parseInt(req.params.id)
+                const endereco = req.body
+                const resp = await enderecoDAO.altera(id, endereco)
+                res.status(resp.codigo).json(resp)
+            } catch (error) {
+                res.status(error.codigo).json(error)
+            }
+        })
 }
 export default enderecoController

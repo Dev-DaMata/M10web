@@ -86,5 +86,28 @@ class enderecoDAO{
     
 }
 
+static altera(id, endereco, res){
+    const sql = `UPDATE enderecos_usuario SET id_usuario = ?, logradouro = ?, numero = ?, cidade = ?, uf = ?, cep = ?, bairro = ?, complemento = ? WHERE id_endereco_usuario=${id}`
+    return new Promise((resolve, reject)=>{
+        conexao.query(sql, [endereco.id_usuario, endereco.logradouro, endereco.numero, endereco.cidade, endereco.uf, endereco.cep, endereco.bairro, endereco.complemento], (erro)=>{
+            if(erro) {
+                reject({
+                    "codigo": 400,
+                    "status": "bad-request",
+                    "mensagem": "erro interno",
+                    "dados": erro
+                })
+            }else{
+                resolve({
+                    "codigo": 200,
+                    "status": "sucesso",
+                    "mensagem": "endereço alterado com sucesso",
+                    "dados": endereco
+                })
+            }
+        } )
+    })
+}
+
 }
 export default enderecoDAO
