@@ -8,6 +8,11 @@ const usuariosController = (app)=>{
     app.get("/usuarios/:id", (req, res) =>{
         const id = parseInt(req.params.id);
         usuariosModel.listaPorId(id, res)
-    })
+    });
+
+    app.post("/usuarios", (req, res) => {
+        var usuario = req.body
+        usuariosModel.adiciona(usuario, res)
+    });
 };
 export default usuariosController

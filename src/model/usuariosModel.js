@@ -3,6 +3,26 @@ import moment from "moment";
 import { query } from "express";
 
 class usuariosModel{
+    static adiciona(usuarios, res){
+        const sql = 'INSERT INTO usuarios SET nome = ?, sobrenome = ?, email = ?, telefone = ?, cpf = ?';
+        conexao.query(sql,
+            [
+                usuarios.nome,
+                usuarios.sobrenome,
+                usuarios.email,
+                usuarios.telefone,
+                usuarios.cpf
+            ],
+            (erro, resultados)=>{
+            if(erro){
+                res.status(400).json(erro)
+            }else{
+                res.status(200).json(resultados)
+            }
+        })
+    }
+
+
     static lista(res){
         const sql = 'SELECT * FROM usuarios'
         conexao.query(sql, (erro, resultados)=>{
