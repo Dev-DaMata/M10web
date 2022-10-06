@@ -14,5 +14,11 @@ const usuariosController = (app)=>{
         var usuario = req.body
         usuariosModel.adiciona(usuario, res)
     });
+
+    app.put("/usuarios/:id", (req, res)=>{
+        var id = parseInt(req.params.id)
+        var usuario = req.body
+        usuariosModel.altera(id, usuario, res)
+    })
 };
 export default usuariosController

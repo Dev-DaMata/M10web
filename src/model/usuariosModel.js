@@ -22,7 +22,6 @@ class usuariosModel{
         })
     }
 
-
     static lista(res){
         const sql = 'SELECT * FROM usuarios'
         conexao.query(sql, (erro, resultados)=>{
@@ -44,6 +43,24 @@ class usuariosModel{
                 res.status(200).json(usuario)
             }
         })
+    }
+
+    static altera(id, usuario, res){
+        console.log(id);
+        console.log(usuario);
+        const sql = `UPDATE usuarios SET nome = ?, sobrenome = ?, email = ?, telefone = ?, cpf = ? WHERE id_usuario=${id}`
+        console.log(sql);
+        console.log(usuario + "linha 50");
+        conexao.query(sql, [usuario.nome, usuario.sobrenome, usuario.email, usuario.telefone, usuario.cpf], (erro, usuario)=>{
+            console.log(usuario);
+            if(erro) {
+                res.status(400).json(erro)
+            }else{
+                res.status(200).json({
+                    "msg": "O usuario foi alterado com sucesso!"
+                })
+            }
+        } )
     }
 }
 export default usuariosModel
