@@ -367,3 +367,46 @@ Esquema da resposta:
 	"dados": "Deletado"
 }
 ```
+- **PUT /endereço/id**
+- 
+- Verbo responsavel pela atualização do endereço por id
+
+Esquema da requisição:
+
+>http://localhost:3000/endereco/1
+
+No json:
+
+```json
+{
+	"id_endereco_usuario": 2,
+	"id_usuario": 6,
+	"logradouro": "rua das cobras",
+	"numero": "5",
+	"cidade": "itatiba",
+	"uf": "sp",
+	"cep": "64835176",
+	"bairro": "bairro das garças",
+	"complemento": "não tem "
+}
+```
+Esquema da resposta:
+```json
+{
+	"codigo": 200,
+	"status": "sucesso",
+	"mensagem": "endereço alterado com sucesso",
+	"dados": {
+		"id_endereco_usuario": 2,
+		"id_usuario": 6,
+		"logradouro": "rua das cobras",
+		"numero": "5",
+		"cidade": "itatiba",
+		"uf": "sp",
+		"cep": "64835176",
+		"bairro": "bairro das garças",
+		"complemento": "não tem "
+	}
+}
+```
+---
