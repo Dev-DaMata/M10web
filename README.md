@@ -160,3 +160,19 @@ Esquema da resposta:
 	"msg": "O usuário foi adicionado com successo!"
 }
 ```
+---
+- **DELETE /usuarios**
+
+Verbo responsavel por excluir o usuario do banco de dados
+
+Esquema da requisição:
+
+>http://localhost:3000/usuarios/15
+
+Esquema da resposta:
+
+```json
+{
+	"O usuario com o id 15, foi deletado com sucesso!"
+}
+```
