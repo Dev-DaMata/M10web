@@ -1,4 +1,4 @@
-<h1> ⚠️ Status: :construction: </h1>
+<h1> ⚠️ Status: :white_check_mark: </h1>
 
 <h1 align="center">PROCESSO SELETIVO TROPA DIGITAL</h1>
 
