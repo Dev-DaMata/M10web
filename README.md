@@ -348,3 +348,22 @@ Esquema da resposta:
 	]
 }
 ```
+---
+- **DELETE /endereco/id**
+
+Verbo responsavel por excluir o endereço do banco de dados 
+
+Esquema da requisição:
+
+> http://localhost:3000/endereco/2
+
+Esquema da resposta:
+
+```json
+{
+	"codigo": 200,
+	"status": "sucesso",
+	"mensagem": "Endereço com o id:2 deletado",
+	"dados": "Deletado"
+}
+```
