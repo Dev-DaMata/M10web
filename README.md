@@ -176,3 +176,31 @@ Esquema da resposta:
 	"O usuario com o id 15, foi deletado com sucesso!"
 }
 ```
+---
+- **PUT /usuarios**
+
+Verbo responsavel pela atualização do usuario
+
+Esquema da requisição:
+
+>http://localhost:3000/usuarios/6
+
+No json:
+
+```json
+{
+	"nome": "junin",
+	"sobrenome": "silva",
+	"email": "junin@htht",
+	"telefone": "888475412",
+	"cpf": "74512752827"
+}
+```
+Esquema da resposta:
+
+```json
+{
+	"msg": "O usuario foi alterado com sucesso!"
+}
+```
+---
