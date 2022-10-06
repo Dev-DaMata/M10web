@@ -109,5 +109,28 @@ static altera(id, endereco, res){
     })
 }
 
+static deleta(id){
+    const sql = 'DELETE FROM enderecos_usuario WHERE id_endereco_usuario=?'
+    return new Promise((resolve, reject)=>{
+        conexao.query(sql, id, (erro)=>{
+            if(erro){
+                reject({
+                    "codigo": 400,
+                    "status": "bad-request",
+                    "mensagem": "erro interno",
+                    "dados": erro
+                })
+            }else{
+                resolve({
+                    "codigo": 200,
+                    "status": "sucesso",
+                    "mensagem": `Endereço com o id:${id} deletado`,
+                    "dados": "Deletado"
+                })
+            }
+        })
+    })
+}
+
 }
 export default enderecoDAO

@@ -40,5 +40,15 @@ const enderecoController = (app)=>{
                 res.status(error.codigo).json(error)
             }
         })
+
+        app.delete("/endereco/:id", async(req, res)=>{
+            try {
+                const id = parseInt(req.params.id)
+                const resp = await enderecoDAO.deleta(id)
+                res.status(resp.codigo).json(resp)
+            } catch (error) {
+                res.status(error.codigo).json(error)
+            }
+        })
 }
 export default enderecoController
