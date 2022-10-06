@@ -235,3 +235,75 @@ Esquema da resposta:
 }
 ```
 ---
+### Endereços
+
+- **GET /endereco**
+
+Confira os endereços registrados no banco de dados
+
+Esquema da requisição:
+
+> http://localhost:3000/endereco
+
+Esquema da resposta:
+
+```json
+{
+	"codigo": 200,
+	"status": "sucesso",
+	"mensagem": "Aqui esta a lista com todos os endereços dos usuarios",
+	"dados": [
+		{
+			"id_endereco_usuario": 1,
+			"id_usuario": 2,
+			"logradouro": "rua das mangueiras",
+			"numero": "1455",
+			"cidade": "atibaia",
+			"uf": "sp",
+			"cep": "64835986",
+			"bairro": "bairro das lagoas",
+			"complemento": "não tem "
+		},
+		{
+			"id_endereco_usuario": 2,
+			"id_usuario": 4,
+			"logradouro": "rua das mangueiras",
+			"numero": "1455",
+			"cidade": "atibaia",
+			"uf": "sp",
+			"cep": "64835986",
+			"bairro": "bairro das rochas",
+			"complemento": "não tem "
+		}
+	]
+}
+```
+- **GET /endereco/id**
+
+Buscar um endereço no banco de dados a pardir de um id
+
+Esquema da requisição:
+
+>http://localhost:3000/endereco/1
+
+Esquema da resposta:
+
+```json
+{
+	"codigo": 200,
+	"status": "sucesso",
+	"mensagem": "Listado apenas um endereço",
+	"dados": {
+		"id_endereco_usuario": 1,
+		"id_usuario": 2,
+		"logradouro": "rua das mangueiras",
+		"numero": "1455",
+		"cidade": "atibaia",
+		"uf": "sp",
+		"cep": "64835986",
+		"bairro": "bairro das lagoas",
+		"complemento": "não tem "
+	}
+}
+```
+---
