@@ -11,9 +11,14 @@ const usuariosController = (app)=>{
     }
     });
 
-    app.get("/usuarios/:id", (req, res) =>{
-        const id = parseInt(req.params.id);
-        usuariosModel.listaPorId(id, res)
+    app.get("/usuarios/:id", async (req, res) =>{
+        try{
+            const id = parseInt(req.params.id);
+            const resp = await usuariosDAO.listaPorId(id)
+            res.status(resp.codigo).json(resp)
+        } catch (error) {
+            res.status(error.codigo).json(error)
+        }
     });
 
     app.post("/usuarios", async(req, res) => {

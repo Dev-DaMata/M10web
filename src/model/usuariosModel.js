@@ -35,23 +35,6 @@ class usuariosModel{
         
     }
 
-    static listaPorId(id, res){
-        const sql = `SELECT * FROM usuarios WHERE id_usuario=${id}`
-        conexao.query(sql, (erro, resultado) =>{
-            const usuario = resultado[0]
-            if(erro){
-                res.status(400).json(erro)
-            }else{
-                res.status(200).json({
-                    "codido": 200,
-                    "status": "sucesso",
-                    "mensagem": "Listado apenas um usuario",
-                    "dados": usuario
-                })
-            
-            }
-        })
-    }
 
     static altera(id, usuario, res){
         console.log(id);

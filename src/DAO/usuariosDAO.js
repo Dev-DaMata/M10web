@@ -58,5 +58,30 @@ class usuarioDAO{
             })
         })
     }
+
+    static listaPorId(id, res){
+        const sql = `SELECT * FROM usuarios WHERE id_usuario=${id}`
+        return new Promise((resolve, reject)=>{
+            conexao.query(sql, (erro, resultado) =>{
+                const usuario = resultado[0]
+                if(erro){
+                    reject({
+                        "codigo": 400,
+                        "status": "bad-request",
+                        "mensagem": "erro interno",
+                        "dados": erro
+                    })
+                }else{
+                    resolve({
+                        "codigo": 200,
+                        "status": "sucesso",
+                        "mensagem": "Listado apenas um usuario",
+                        "dados": usuario
+                    })
+                }
+            })
+        })
+    }
+
 }
 export default usuarioDAO
