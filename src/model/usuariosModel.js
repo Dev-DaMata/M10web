@@ -36,27 +36,6 @@ class usuariosModel{
     }
 
 
-    static altera(id, usuario, res){
-        console.log(id);
-        console.log(usuario);
-        const sql = `UPDATE usuarios SET nome = ?, sobrenome = ?, email = ?, telefone = ?, cpf = ? WHERE id_usuario=${id}`
-        conexao.query(sql, [usuario.nome, usuario.sobrenome, usuario.email, usuario.telefone, usuario.cpf], (erro)=>{
-            console.log(usuario);
-            if(erro) {
-                res.status(400).json(erro)
-            }else{
-                res.status(200).json({
-                    "codido": 200,
-                    "status": "sucesso",
-                    "mensagem": `Atualizado apenas o usuario de id:${id}`,
-                    "dados": [
-                        usuario,
-                    ]            
-                })
-                console.log(usuario);
-            }
-        } )
-    }
 
     static deleta(id, res, usuario){
         const sql = 'DELETE FROM usuarios WHERE id_usuario=?'

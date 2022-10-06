@@ -32,15 +32,26 @@ const usuariosController = (app)=>{
         }
     });
 
-    app.put("/usuarios/:id", (req, res)=>{
-        var id = parseInt(req.params.id)
-        var usuario = req.body
-        usuariosModel.altera(id, usuario, res)
+    app.put("/usuarios/:id", async(req, res)=>{
+        try {
+            const id = parseInt(req.params.id)
+            const usuarios = req.body
+            const modelado = await usuariosModel.modela(usuarios)
+            const resp = await usuariosDAO.altera(id, modelado)
+            res.status(resp.codigo).json(resp)
+        } catch (error) {
+            res.status(error.codigo).json(error)
+        }
     })
 
-    app.delete("/usuarios/:id", (req, res)=>{
-        const id = parseInt(req.params.id)
-        usuariosModel.deleta(id, res)
+    app.delete("/usuarios/:id", async(req, res)=>{
+        try {
+            const id = parseInt(req.params.id)
+            const resp = await usuariosDAO.deleta(id)
+            res.status(resp.codigo).json(resp)
+        } catch (error) {
+            res.status(error.codigo).json(error)
+        }
     })
 };
 export default usuariosController

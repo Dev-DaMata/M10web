@@ -59,7 +59,7 @@ class usuarioDAO{
         })
     }
 
-    static listaPorId(id, res){
+    static listaPorId(id){
         const sql = `SELECT * FROM usuarios WHERE id_usuario=${id}`
         return new Promise((resolve, reject)=>{
             conexao.query(sql, (erro, resultado) =>{
@@ -83,5 +83,50 @@ class usuarioDAO{
         })
     }
 
+    static altera(id, usuario, res){
+        const sql = `UPDATE usuarios SET nome = ?, sobrenome = ?, email = ?, telefone = ?, cpf = ? WHERE id_usuario=${id}`
+        return new Promise((resolve, reject)=>{
+            conexao.query(sql, [usuario.nome, usuario.sobrenome, usuario.email, usuario.telefone, usuario.cpf], (erro)=>{
+                if(erro) {
+                    reject({
+                        "codigo": 400,
+                        "status": "bad-request",
+                        "mensagem": "erro interno",
+                        "dados": erro
+                    })
+                }else{
+                    resolve({
+                        "codigo": 200,
+                        "status": "sucesso",
+                        "mensagem": "usuario alterado com sucesso",
+                        "dados": usuario
+                    })
+                }
+            } )
+        })
+    }
+
+    static deleta(id){
+        const sql = 'DELETE FROM usuarios WHERE id_usuario=?'
+        return new Promise((resolve, reject)=>{
+            conexao.query(sql, id, (erro)=>{
+                if(erro){
+                    reject({
+                        "codigo": 400,
+                        "status": "bad-request",
+                        "mensagem": "erro interno",
+                        "dados": erro
+                    })
+                }else{
+                    resolve({
+                        "codigo": 200,
+                        "status": "sucesso",
+                        "mensagem": `Deletado usuario de id:${id}`,
+                        "dados": "Deletado"
+                    })
+                }
+            })
+        })
+    }
 }
 export default usuarioDAO
