@@ -20,5 +20,10 @@ const usuariosController = (app)=>{
         var usuario = req.body
         usuariosModel.altera(id, usuario, res)
     })
+
+    app.delete("/usuarios/:id", (req, res)=>{
+        const id = parseInt(req.params.id)
+        usuariosModel.deleta(id, res)
+    })
 };
 export default usuariosController

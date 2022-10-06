@@ -62,5 +62,17 @@ class usuariosModel{
             }
         } )
     }
+
+    static deleta(id, res){
+        const sql = 'DELETE FROM usuarios WHERE id_usuario=?'
+
+        conexao.query(sql, id, (erro, resultado)=>{
+            if(erro){
+                res.status(400).json(erro)
+            }else{
+                res.status(200).json(`O usuario com o id ${id}, foi deletado com sucesso!`)
+            }
+        })
+    }
 }
 export default usuariosModel
