@@ -307,3 +307,44 @@ Esquema da resposta:
 }
 ```
 ---
+- **POST /endereco**
+
+Verbo responsavel por adicionar endereços no banco de dados
+
+Esquema da requisição:
+
+>http://localhost:3000/endereco
+
+No json:
+```json
+{
+	"id_usuario": "4",
+	"logradouro": "rua das mangueiras",
+	"numero": "1455",
+	"cidade": "atibaia",
+	"uf": "sp",
+	"cep": "64835986",
+	"bairro": "bairro das rochas",
+	"complemento": "não tem "
+}
+```
+
+Esquema da resposta:
+
+```json
+{
+	"codigo": 200,
+	"status": "sucesso",
+	"mensagem": "O completo foi inserido com sucesso",
+	"dados": [
+		"4",
+		"rua das mangueiras",
+		"1455",
+		"atibaia",
+		"sp",
+		"64835986",
+		"bairro das rochas",
+		"não tem "
+	]
+}
+```
