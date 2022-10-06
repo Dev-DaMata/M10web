@@ -1,25 +1,38 @@
 import conexao from "../infra/conexao.js";
-import moment from "moment";
-import { query } from "express";
 
 class usuariosModel{
-    static adiciona(usuarios, res){
-        const sql = 'INSERT INTO usuarios SET nome = ?, sobrenome = ?, email = ?, telefone = ?, cpf = ?';
-        conexao.query(sql,
-            [
-                usuarios.nome,
-                usuarios.sobrenome,
-                usuarios.email,
-                usuarios.telefone,
-                usuarios.cpf
-            ],
-            (erro, resultados)=>{
-            if(erro){
-                res.status(400).json(erro)
+    
+    static modela(obj){
+        return new Promise((resolve, reject)=>{
+            if(this.valida(obj.email)){
+                resolve({
+                    nome: obj.nome,
+                    sobrenome: obj.sobrenome,
+                    email: obj.email,
+                    telefone: obj.telefone,
+                    cpf: obj.cpf
+                })
             }else{
-                res.status(200).json(resultados)
+                reject({
+                    "codigo": 400,
+                    "status": "bad-request",
+                    "mensagem": "email invalido",
+                    "dados": obj
+                })
             }
         })
+        
+    }
+
+    static valida(email){
+        let regex_validation = /^([a-z]){1,}([a-z0-9._-]){1,}([@]){1}([a-z]){2,}([.]){1}([a-z]){2,}([.]?){1}([a-z]?){2,}$/i;
+        if(regex_validation.test(email)){
+            return true   
+        }else{
+            return false
+        }
+
+        
     }
 
     static lista(res){
@@ -28,7 +41,12 @@ class usuariosModel{
             if(erro){
                 res.status(400).json(erro)
             }else{
-                res.status(200).json(resultados)
+                res.status(200).json({
+                    "codido": 200,
+                    "status": "sucesso",
+                    "mensagem": "Listado todos os usuarios",
+                    "dados": resultados
+                })
             }
         })
     }
@@ -40,7 +58,13 @@ class usuariosModel{
             if(erro){
                 res.status(400).json(erro)
             }else{
-                res.status(200).json(usuario)
+                res.status(200).json({
+                    "codido": 200,
+                    "status": "sucesso",
+                    "mensagem": "Listado apenas um usuario",
+                    "dados": usuario
+                })
+            
             }
         })
     }
@@ -49,28 +73,38 @@ class usuariosModel{
         console.log(id);
         console.log(usuario);
         const sql = `UPDATE usuarios SET nome = ?, sobrenome = ?, email = ?, telefone = ?, cpf = ? WHERE id_usuario=${id}`
-        console.log(sql);
-        console.log(usuario + "linha 50");
-        conexao.query(sql, [usuario.nome, usuario.sobrenome, usuario.email, usuario.telefone, usuario.cpf], (erro, usuario)=>{
+        conexao.query(sql, [usuario.nome, usuario.sobrenome, usuario.email, usuario.telefone, usuario.cpf], (erro)=>{
             console.log(usuario);
             if(erro) {
                 res.status(400).json(erro)
             }else{
                 res.status(200).json({
-                    "msg": "O usuario foi alterado com sucesso!"
+                    "codido": 200,
+                    "status": "sucesso",
+                    "mensagem": `Atualizado apenas o usuario de id:${id}`,
+                    "dados": [
+                        usuario,
+                    ]            
                 })
+                console.log(usuario);
             }
         } )
     }
 
-    static deleta(id, res){
+    static deleta(id, res, usuario){
         const sql = 'DELETE FROM usuarios WHERE id_usuario=?'
 
         conexao.query(sql, id, (erro, resultado)=>{
             if(erro){
                 res.status(400).json(erro)
             }else{
-                res.status(200).json(`O usuario com o id ${id}, foi deletado com sucesso!`)
+                res.status(200).json({
+                    "codido": 200,
+                    "status": "sucesso",
+                    "mensagem": `Deletado apenas o usuario de id:${id}`,
+                    "dados": resultado
+                })
+            
             }
         })
     }
