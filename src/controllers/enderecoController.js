@@ -10,10 +10,20 @@ const enderecoController = (app)=>{
         }
         });
 
-        app.get("/endereco/:id", async (req, res) =>{
+    app.get("/endereco/:id", async (req, res) =>{
             try{
                 const id = parseInt(req.params.id);
                 const resp = await enderecoDAO.listaPorId(id)
+                res.status(resp.codigo).json(resp)
+            } catch (error) {
+                res.status(error.codigo).json(error)
+            }
+        });
+
+    app.post("/endereco", async(req, res) => {
+            let endereco = req.body
+            try {
+                const resp = await enderecoDAO.adiciona(endereco)
                 res.status(resp.codigo).json(resp)
             } catch (error) {
                 res.status(error.codigo).json(error)

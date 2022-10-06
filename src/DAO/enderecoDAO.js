@@ -50,5 +50,41 @@ class enderecoDAO{
             })
         })
     }
+
+    static adiciona(endereco){
+        const sql = 'INSERT INTO enderecos_usuario SET id_usuario = ?, logradouro = ?, numero = ?, cidade = ?, uf = ?, cep = ?, bairro = ?, complemento = ?';
+        return new Promise((resolve, reject)=>{
+            conexao.query(sql,             [
+                endereco.id_usuario,
+                endereco.logradouro,
+                endereco.numero,
+                endereco.cidade,
+                endereco.uf,
+                endereco.cep,
+                endereco.bairro,
+                endereco.complemento,
+            ],(erro)=>{
+                if(erro){
+                    reject({
+                        "codigo": 409,
+                        "status": "conflict",
+                        "mensagem": erro.sqlMessage,
+                        "dados": erro
+                    })
+                }else{
+                    resolve({                      
+                            "codigo": 200,
+                            "status": "sucesso",
+                            "mensagem": `O completo foi inserido com sucesso`,
+                            "dados": [
+                                ...Object.values(endereco)
+                            ]                       
+                    })
+                }
+            })
+        })
+    
+}
+
 }
 export default enderecoDAO
