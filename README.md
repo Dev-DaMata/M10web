@@ -93,24 +93,29 @@ Esquema da requisição:
 Esquema da resposta:
 
 ```json
-[
-	{
-		"id_usuario": 1,
-		"nome": "Leo",
-		"sobrenome": "Leleo",
-		"email": "leleo@gmail",
-		"telefone": "978452587",
-		"cpf": "75812345678"
-	},
-	{
-		"id_usuario": 6,
-		"nome": "Guilherme",
-		"sobrenome": "Cordeiro",
-		"email": "gcordeiro773@gmail",
-		"telefone": "978452247",
-		"cpf": "24512345654"
-	}
-]
+{
+	"codigo": 200,
+	"status": "sucesso",
+	"mensagem": "Aqui esta a lista com todos os usuarios",
+	"dados": [
+		{
+			"id_usuario": 2,
+			"nome": "joelma",
+			"sobrenome": "silva",
+			"email": "joelma@gmail.com",
+			"telefone": "716475512",
+			"cpf": "41283719549"
+		},
+		{
+			"id_usuario": 4,
+			"nome": "guilherme",
+			"sobrenome": "silva",
+			"email": "gcordeiro77@gmail.com",
+			"telefone": "716475512",
+			"cpf": "41283799549"
+		}
+	]
+}
 ```
 ---
 - **GET /usuarios/:id**
