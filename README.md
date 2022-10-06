@@ -155,11 +155,11 @@ Esquema da requisição:
 No json:
 ```json
 {
-	"nome": "joelma",
-	"sobrenome": "silva",
-	"email": "jojo@jeed",
-	"telefone": "716475412",
-	"cpf": "48657845873"
+	"nome": "Hudson",
+	"sobrenome": "Lima",
+	"email": "hudlima@gmail.com",
+	"telefone": "716475512",
+	"cpf": "41283379549"
 }
 ```
 
@@ -167,7 +167,16 @@ Esquema da resposta:
 
 ```json
 {
-	"msg": "O usuário foi adicionado com successo!"
+	"codigo": 200,
+	"status": "sucesso",
+	"mensagem": "O usuario foi inserido com sucesso",
+	"dados": [
+		"Hudson",
+		"Lima",
+		"hudlima@gmail.com",
+		"716475512",
+		"41283379549"
+	]
 }
 ```
 ---
