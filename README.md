@@ -133,3 +133,30 @@ Esquema da resposta:
 	"cpf": "24512345654"
 }
 ```
+---
+- **POST /usuarios**
+
+Verbo responsavel por adicionar usuários no banco de dados 
+
+Esquema da requisição:
+
+>http://localhost:3000/usuarios
+
+No json:
+```json
+{
+	"nome": "joelma",
+	"sobrenome": "silva",
+	"email": "jojo@jeed",
+	"telefone": "716475412",
+	"cpf": "48657845873"
+}
+```
+
+Esquema da resposta:
+
+```json
+{
+	"msg": "O usuário foi adicionado com successo!"
+}
+```
